@@ -1,0 +1,26 @@
+version: 1
+runtime:
+  snapshot: agent-review-python-node-v1
+  cpu: 4
+  memory_gib: 8
+  disk_gib: 20
+  total_timeout_minutes: 10
+  command_timeout_minutes: 3
+network:
+  mode: blocked
+commands:
+  test:
+    - python -m unittest discover -s tests -v
+review:
+  stance: gate
+  minimum_confidence: 0.8
+  blocking_severities:
+    - critical
+    - high
+  max_inline_comments: 4
+limits:
+  reviewer_read_bytes_per_file: 50000
+  reviewer_read_bytes_total: 200000
+  reviewer_tool_calls: 20
+  model_tokens: 2000
+  model_spend_usd: 0.25
