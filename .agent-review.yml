@@ -8,6 +8,7 @@ runtime:
   command_timeout_minutes: 3
 network:
   mode: blocked
+  allowed_domains: []
 commands:
   test:
     - python -m unittest discover -s tests -v
